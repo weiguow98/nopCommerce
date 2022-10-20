@@ -1,0 +1,71 @@
+﻿
+@model Nop.Plugin.miniorange.saml.Models.metaModel
+@{
+    Layout = "_ConfigurePlugin";
+}
+
+<script src="~/Plugins/miniOrange.saml/Scripts/moplugin.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<link href="~/Plugins/miniOrange.saml/Content/mosamlmain.css" rel="stylesheet" type="text/css" />
+<form asp-controller="saml" asp-action="uploadIdPMetadata" method="post">
+    <div class="panel-group">
+        <div class="panel panel-default" style="width: 650px;">
+            <div class="panel-heading">
+                <b>Fetch Metadata :  </b>
+            </div>
+            <div class="panel-body">
+
+                Enter metadata URL:&emsp;<br />
+                <div class="form-group">
+
+                    <div class="col-md-9">
+                        <nop-editor asp-for="xmlurl_m" placeholder="Enter your metadata Url" />
+                        <span asp-validation-for="xmlurl_m"></span>
+
+                    </div>
+                </div>
+
+                <br />
+                <div class="col-md-9" style="margin-left: -14px;">
+                    <input type="submit" name="save" class="btn bg-blue" value="Fetch Metadata" />
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="panel panel-default" style="width: 650px;">
+    <div class="panel-heading" style="margin-top: -19px;margin-bottom: -19px; text-align:center">
+        <b><i>OR</i></b>
+    </div>
+</div>
+
+
+<form asp-controller="saml" asp-action="uploadIdPxmlfile" method="post" enctype="multipart/form-data" style="margin-top:40px;">
+    <div class="panel-group">
+        <div class="panel panel-default" style="width: 650px;">
+            <div class="panel-heading">
+                <b>Upload Metadata</b>
+            </div>
+            <div class="panel-body">
+
+                Upload XML File : &emsp;<br /><br />
+                <div class="form-group">
+
+                    <div class="col-md-9">
+                        <input id='xmlfile_m' type='file' name="xmlfile_m" />
+
+
+                    </div>
+                </div>
+
+                <br />
+                <div class="col-md-9" style="margin-left: -14px;">
+                    <input type="submit" name="save" class="btn bg-blue" value="Upload Metadata" />
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>

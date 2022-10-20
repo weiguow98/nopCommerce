@@ -1,0 +1,58 @@
+﻿@model Nop.Plugin.miniorange.saml.Models.SupportModel
+@{
+    Layout = "_ConfigurePlugin";
+}
+
+<form asp-controller="saml" asp-action="Support" method="post">
+    <div class="panel-group" style="width:700px">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <label style="align-content:center"><b>Need Help? Please fill up the below form.</b></label>
+            </div>
+            <div class="panel-body">
+
+                <label>Name: <span style="color:red">*</span></label>
+                <div class="form-group">
+                    <div class="col-md-9">
+                        <nop-editor asp-for="name" style="width: 500px;" />
+                        <span asp-validation-for="name"></span>
+                    </div>
+                </div>
+
+                <label>Email ID <span style="color:red">*</span> </label>
+                <div class="form-group">
+                    <div class="col-md-9">
+                        <nop-editor asp-for="emailid" style="width: 500px;" />
+                        <span asp-validation-for="emailid"></span>
+                    </div>
+                </div>
+
+                <label>Query &nbsp;&nbsp;</label><div data - toggle='tooltip' title='Enter your detailed query here' class='fa fa-question-circle'></div>
+                <div class="form-group">
+                    <div class="col-md-9">
+
+                        <textarea id="problem" name="problem" rows="4" cols="50" style="width: 500px;">
+                        </textarea>
+
+
+                    </div>
+                </div>
+                <br>
+
+                <input type="submit" name="save" class="btn bg-blue" value="Submit Query" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">[You can reach us directly at <a href="mailto:info@xecurify.com">info@xecurify.com</a> ]</span>
+
+
+
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+

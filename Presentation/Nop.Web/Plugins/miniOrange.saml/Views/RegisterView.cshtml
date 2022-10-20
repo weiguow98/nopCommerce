@@ -1,0 +1,50 @@
+﻿@model Nop.Plugin.miniorange.saml.Models.RegisterModel
+@{
+    Layout = "_ConfigurePlugin";
+}
+
+<form asp-controller="saml" asp-action="CustomerAccountSetup" method="post">
+    <div class="panel-group" style="width:700px">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <label style="align-content:center"><h3><b>Register with miniOrange</b></h3></label>
+                <h4><b>Why should I Register?</b></h4>
+                <div style='background: aliceblue; padding: 10px 10px 10px 10px; border-radius: 10px;'>You should register so that in case you need help, we can help you with step by step instructions. <b>You will also need a miniOrange account to upgrade to the premium version of the plugins</b>. We do not store any information except the email that you will use to register with us. </div><br>
+            </div>
+            <div class="panel-body">
+
+                <label>Email: <span style="color:red">*</span></label>
+                <div class="form-group">
+                    <div class="col-md-9">
+                        <nop-editor asp-for="acc_email" style="width: 500px;" />
+                        <span asp-validation-for="acc_email"></span>
+                    </div>
+                </div>
+
+                <label>Password:  <span style="color:red">*</span> </label>
+                <div class="form-group">
+                    <div class="col-md-9">
+                        <input class="form-control text-box single-line" id="acc_password" name="acc_password" type="password">
+                        <span asp-validation-for="acc_password"></span>
+                    </div>
+                </div>
+
+                <label>Confirm Password:  <span style="color:red">*</span> </label>
+                <div class="form-group">
+                    <div class="col-md-9">
+                        <input class="form-control text-box single-line" id="acc_confirmpassword" name="acc_confirmpassword" type="password">
+                        <span asp-validation-for="acc_confirmpassword"></span>
+                    </div>
+                </div>
+
+                <br>
+
+                <input type="submit" name="register" class="btn bg-blue" value="Register" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href='@Url.Action("LoginView", "saml")'>Already have an account? Login here</a>
+
+            </div>
+        </div>
+    </div>
+</form>
+
+

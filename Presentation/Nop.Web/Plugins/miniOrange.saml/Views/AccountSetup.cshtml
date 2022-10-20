@@ -1,0 +1,33 @@
+﻿@model Nop.Plugin.miniorange.saml.Models.AccountSetup
+@{
+    Layout = "_ConfigurePlugin";
+}
+
+ @if (String.IsNullOrEmpty(Model.admincustomerkey)){
+     <script>
+         window.location.href = '@Url.Action("CustomerAccountSetup", "saml")';
+     </script>
+ }
+ else{
+    <div class='mo_saml_table_layout'>
+		<h2>Thank you for registering with miniOrange.</h2>
+		<br />
+		<table border='1'
+			style='background-color: #FFFFFF; border: 1px solid #CCCCCC; border-collapse: collapse; padding: 0px 0px 0px 10px; margin: 2px; width: 55%'>
+			<tr>
+				<td style='width: 45%; padding: 10px;'>miniOrange Account Email</td>
+				<td style='width: 55%; padding: 10px;'>@Model.adminemail</td>
+            </tr>
+			<tr>
+				<td style='width: 45%; padding: 10px;'>Customer ID</td>
+				<td style='width: 55%; padding: 10px;'>@Model.admincustomerkey</td>
+            </tr>
+		</table>
+		<br />
+		<br />
+										
+		<br />
+
+	</div>
+}
+

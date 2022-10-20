@@ -1,0 +1,527 @@
+﻿@model Nop.Plugin.miniorange.saml.Models.ConfigurationModel
+@{
+    Layout = "_ConfigurePlugin";
+    
+}
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<link href="~/Plugins/miniOrange.saml/Content/mosamlmain.css" rel="stylesheet" type="text/css" />
+<script>
+    $(document).ready(function () {
+
+
+
+        var numItems = $('li.mo_saml_mo_saml_fancyTab').length;
+
+
+        if (numItems == 12) {
+            $("li.mo_saml_fancyTab").width('8.3%');
+        }
+        if (numItems == 11) {
+            $("li.mo_saml_fancyTab").width('9%');
+        }
+        if (numItems == 10) {
+            $("li.mo_saml_fancyTab").width('10%');
+        }
+        if (numItems == 9) {
+            $("li.mo_saml_fancyTab").width('11.1%');
+        }
+        if (numItems == 8) {
+            $("li.mo_saml_fancyTab").width('12.5%');
+        }
+        if (numItems == 7) {
+            $("li.mo_saml_fancyTab").width('14.2%');
+        }
+        if (numItems == 6) {
+            $("li.mo_saml_fancyTab").width('16.666666666666667%');
+        }
+        if (numItems == 5) {
+            $("li.mo_saml_fancyTab").width('20%');
+        }
+        if (numItems == 4) {
+            $("li.mo_saml_fancyTab").width('25%');
+        }
+        if (numItems == 3) {
+            $("li.mo_saml_fancyTab").width('33.3%');
+        }
+        if (numItems == 2) {
+            $("li.mo_saml_fancyTab").width('50%');
+        }
+
+
+
+
+    });
+
+    $(window).load(function () {
+
+        $('.mo_saml_fancyTabs').each(function () {
+
+            var highestBox = 0;
+            $('.mo_saml_fancyTab a', this).each(function () {
+
+                if ($(this).height() > highestBox)
+                    highestBox = $(this).height();
+            });
+
+            $('.mo_saml_fancyTab a', this).height(highestBox);
+
+        });
+    });
+
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+    </script>
+@if (Model.trialexpired)
+{
+    <div style="background-color: orange;border-radius: 3px;margin:10px 10px 10px 0px; color:white;width:61%;padding:10px;">
+        Your trial license has expired. Please purchase the full license to continue your SSO services. You can <a style="color: #9ecde8;" href="mailto:info@xecurify.com">contact us</a> for further steps.
+    </div>
+}
+else
+{
+    <div style="background-color: orange;border-radius: 3px;margin:10px 10px 10px 0px; color:white;width:50%;padding:10px;">
+        This is a 14 days trial license. Your trial license expires on : @Model.expdate.
+    </div>
+}
+<div style="align-content:flex-end; margin-left: 53%;margin-top: -51px;">
+    <input style="background-color: orange;border-color: orange" type="button" class="btn-primary btn" value="Premium Plans | Upgrade Now" onclick="window.location.href='/nop44sso/Admin/saml/Plans';">&nbsp;&nbsp;&nbsp;<input type="button" class="btn-primary btn" value="Account Setup" onclick="window.location.href='/nop44sso/Admin/saml/AccountSetupPage';">&nbsp;&nbsp;
+    <input type="button" class="btn-primary btn" value="Need help? Contact us now" onclick="window.location.href='/nop44sso/Admin/saml/Support';" style="/*! margin-top: 0px; */">
+</div>
+
+<div class="mo_saml_container">
+    <section id="mo_saml_fancyTabWidget" class="tabs t-tabs">
+        <ul class="nav nav-tabs mo_saml_fancyTabs" role="tablist">
+
+            <li class="tab mo_saml_fancyTab active">
+                <div class="mo-saml-arrow-down"><div class="mo-saml-arrow-down-inner"></div></div>
+                <a id="tab0" href="#tabBody0" role="tab" aria-controls="tabBody0" aria-selected="true" data-toggle="tab" tabindex="0"></span><span class="hidden-xs" style="font-size: 18px;">Identity Provider Settings</span></a>
+                <div class="whiteBlock"></div>
+            </li>
+
+            <li class="tab mo_saml_fancyTab">
+                <div class="mo-saml-arrow-down"><div class="mo-saml-arrow-down-inner"></div></div>
+                <a id="tab1" href="#tabBody1" role="tab" aria-controls="tabBody1" aria-selected="true" data-toggle="tab" tabindex="0"><span class="hidden-xs" style="font-size: 18px;">Service Provider Metadata</span></a>
+                <div class="whiteBlock"></div>
+            </li>
+
+            <li class="tab mo_saml_fancyTab">
+                <div class="mo-saml-arrow-down"><div class="mo-saml-arrow-down-inner"></div></div>
+                <a id="tab2" href="#tabBody2" role="tab" aria-controls="tabBody2" aria-selected="true" data-toggle="tab" tabindex="0"><span class="hidden-xs" style="font-size: 16px;">Attribute/Role Mapping</span></a>
+                <div class="whiteBlock"></div>
+            </li>
+
+            <li class="tab mo_saml_fancyTab">
+                <div class="mo-saml-arrow-down"><div class="mo-saml-arrow-down-inner"></div></div>
+                <a id="tab3" href="#tabBody3" role="tab" aria-controls="tabBody3" aria-selected="true" data-toggle="tab" tabindex="0"><span class="hidden-xs" style="font-size: 18px;">Redirection & SSO link</span></a>
+                <div class="whiteBlock">
+
+                </div>
+            </li>
+
+            <li class="tab mo_saml_fancyTab">
+                <div class="mo-saml-arrow-down"><div class="mo-saml-arrow-down-inner"></div></div>
+                <a id="tab4" href="#tabBody4" role="tab" aria-controls="tabBody4" aria-selected="true" data-toggle="tab" tabindex="0"><span class="hidden-xs" style="font-size: 18px;">How to setup ?</span></a>
+                <div class="whiteBlock"></div>
+            </li>
+
+
+        </ul>
+        <div id="myTabContent" class="tab-content mo_saml_fancyTabContent" aria-live="polite">
+            <div class="tab-pane  fade active in" id="tabBody0" role="tabpanel" aria-labelledby="tab0" aria-hidden="false" tabindex="0">
+                <div>
+                    <div class="row">
+
+                        <div class="col-md-12">
+                            <form asp-controller="saml" asp-action="Configure" method="post">
+                                <div class="panel-group">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <label style="align-content:center"><b>IdP Configuration:</b></label> <input type="button" class="btn-primary btn" style="align-content: flex-end; margin-left: 667px; float:; margin-top: -6px;" value="Upload IdP Metadata" onclick="@("window.location.href='" + @Url.Action("uploadIdPMetadata", "saml") + "'");" />
+
+                                        </div>
+                                        <div class="panel-body">
+
+
+                                            <label>IdP Entity ID <span style="color:red">*</span></label>
+
+                                            <div class="form-group">
+
+                                                <div class="col-md-9">
+                                                    <nop-editor asp-for="idpentityid" placeholder="IdP Entity ID" />
+                                                    <span asp-validation-for="idpentityid"></span>
+
+                                                </div>
+                                            </div>
+                                            <label>Single Sign-On Url <span style="color:red">*</span></label>
+
+                                            <div class="form-group">
+
+                                                <div class="col-md-9">
+                                                    <nop-editor asp-for="idpssourl" placeholder="Single Sign-On URL" />
+                                                    <span asp-validation-for="idpssourl"></span>
+                                                </div>
+                                            </div>
+                                            <label>Single Logout Url <span style="color:blue;">[PREMIUM FEATURE]</span> </label>
+
+                                            <div class="form-group">
+
+                                                <div class="col-md-9">
+                                                    <input id="idpslourl" name="idpslourl" placeholder="SAML Single Logout URL" disabled style="width: 698px;height: 31px; background-color: #eee;" />
+                                                </div>
+                                            </div>
+                                            <label>X509 Certificate  <span style="color:blue;">[PREMIUM FEATURE]</span></label>
+
+                                            <div class="form-group">
+                                                <textarea id="certID" readonly rows="4" cols="88" style="margin-left:17px; background-color: #eee; width: 695px;" disabled placeholder="IdP X509 Certificate"></textarea>
+
+                                            </div>
+                                            <br />
+                                            <div class="col-md-9">
+                                                <label>
+                                                    AutoRegistration&nbsp;<div data - toggle='tooltip' title='This feature when enabled registers users in the nopCommerce DB' class='fa fa-question-circle'></div>&nbsp;<span style="color:blue;">[PREMIUM FEATURE]</span>
+                                                    &nbsp;:
+                                                </label>
+                                                <nop-editor asp-for="autoregister" asp-disabled="true" asp-value="true" />
+                                                <span asp-validation-for="autoregister"></span>
+                                                &nbsp;&nbsp;&nbsp;
+                                                <label>Enable SSO&nbsp;<div data - toggle='tooltip' title='This feature allows SSO to be enabled/disabled on your store' class='fa fa-question-circle'></div>:&nbsp; </label>
+                                                <nop-editor asp-for="enablesso" />
+                                                <span asp-validation-for="enablesso"></span>
+                                            </div>
+                                            <br />
+                                            <br />
+                                            <div class="col-md-9" style="align-content:left; align-items:flex-start; padding-left:0.5em">
+                                                <input type="submit" name="save" class="btn bg-blue" value="@T("Admin.Common.Save")" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" onclick="window.open('@Url.Action("login", "saml", new { RelayState = "testvalidate" })', '', 'width = 670,height = 530')" name="save" class="btn bg-blue" value="TestConfiguration" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+                            </form>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane  fade" id="tabBody1" role="tabpanel" aria-labelledby="tab1" aria-hidden="true" tabindex="0">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <h4>Service Provider Metadata</h4>
+                        <hr />
+                        Provide this metadata URL to your Identity Provider or download the .xml file to upload it in your idp:
+                        <br />
+                        @{
+                            string md_url = Context.Request.Scheme + "://" + Context.Request.Host + Context.Request.PathBase;
+                            md_url += "/Admin/saml/metadata";
+                        }
+                        <br />
+                        <b>Metadata URL : </b><div data - toggle='tooltip' title='Link to your Service Provider Metadata' class='fa fa-question-circle'></div>
+                        <code><a href='@Url.Action("metadata", "saml")' target='_blank'>@md_url</a></code>
+
+                        <br />
+                        <br />
+                        <b style="margin-left: 7em;"><i>OR</i></b>
+                        <br />
+                        <br />
+                        <b>Download metadata XML file&nbsp; <div data - toggle='tooltip' title='Service Provider Metadata as a .xml file' class='fa fa-question-circle'></div>  : </b> <input type="button" onclick="@("window.location.href='" + @Url.Action("download_metadata", "saml") + "'");" class="btn-primary btn" value="Download" />
+                        <!--<code><a class="button btn" style="background-color:cadetblue; color:white;" href='@Url.Action("download_metadata", "saml")' target='_blank'>Download</a></code> -->
+                        <br />
+                        <hr />
+                        You will need the following information to configure your IdP. Please copy it and keep it handy:
+                        <br /><br />
+                        <table id="mo_saml_customers">
+                            <tr>
+                                <th style="background-color:lightslategray; align-content:center" align="center">Name</th>
+                                <th style="background-color:lightslategray;  align-content:center" align="center">Metadata</th>
+                            </tr>
+                            <tr>
+                                <td>Base URL</td>
+                                <td>@Model.baseurl</td>
+                            </tr>
+                            <tr>
+                                <td>SP Entity ID</td>
+                                <td>@Model.spentityid</td>
+                            </tr>
+                            <tr>
+                                <td>ACS URL</td>
+                                <td>@Model.acsurl</td>
+                            </tr>
+                            <tr>
+                                <td>SP Logout URL</td>
+                                <td>@Model.splogouturl</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane  fade" id="tabBody2" role="tabpanel" aria-labelledby="tab2" aria-hidden="true" tabindex="0">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form asp-controller="saml" asp-action="AttrMapping" method="post">
+                            <div class="panel-group">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <b>Basic Attribute Mapping   </b>&nbsp;&nbsp;<div data - toggle='tooltip' title='This feature can be used to map user attributes coming from Identity Provider with nopCommerce user details' class='fa fa-question-circle'></div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <label>Username <span style="color:red">*</span> </label>
+                                        <div class="form-group">
+                                            <div class="col-md-9">
+                                                <nop-editor asp-for="username" placeholder="Attribute Name received for username claim" />
+                                                <span asp-validation-for="username"></span>
+                                            </div>
+                                        </div>
+
+                                        <label>Email <span style="color:red">*</span> </label>
+                                        <div class="form-group">
+                                            <div class="col-md-9">
+                                                <nop-editor asp-for="email" placeholder="Attribute Name received for email claim" />
+                                                <span asp-validation-for="email"></span>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="col-md-9" style="margin-left: -14px;">
+                                            <input type="submit" name="save" class="btn bg-blue" value="@T("Admin.Common.Save")" />
+                                        </div>
+
+                                    </div>
+
+                                    <div class="panel-heading">
+                                        <b>Custom Attribute Mapping &nbsp;&nbsp;<div data - toggle='tooltip' title='Customized Attribute Mapping means you can map any attribute of the IDP to the usermeta table of your database.' class='fa fa-question-circle'></div>&nbsp;&nbsp; <span style="color:blue">[PREMIUM FEATURE]</span></b>
+                                    </div>
+                                    <div class="panel-body">
+
+                                        <div data-role="dynamic-fields">
+
+                                            <div class="form-inline">
+                                                <div class="form-group" style="padding-left:1.5em;">
+                                                    <input type="text" class="form-control" id="attribute_name" name="attribute_name[]" placeholder="Attribute Name" style="text-align: center" disabled />
+                                                    <span>&nbsp;&nbsp;&nbsp;</span>
+                                                    <input type="text" class="form-control" id="attribute_value" name="attribute_value[]" placeholder="Attribute Value" style="text-align: center" disabled />
+                                                    <span>&nbsp;&nbsp;&nbsp;</span>
+                                                    <button class="btn btn-danger" disabled>
+                                                        <span class="glyphicon glyphicon-remove"></span>
+                                                    </button>
+                                                    <button class="btn btn-primary" disabled>
+                                                        <span class="glyphicon glyphicon-plus"></span>
+                                                    </button>
+                                                </div>
+                                            </div><br />
+                                            [Note: This will allow to map custom attributes for your customer with the attributes received from your identity provider]
+                                            <!-- /div.form-inline -->
+
+                                            <br />
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel-group">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <label style="align-content:center"><b>Default Role Mapping &nbsp;  &nbsp;<div data - toggle='tooltip' title='This feature can be used to map different NopCommerce roles to different users based on their IDP roles/groups' class='fa fa-question-circle'></div> <span style="color:blue">[PREMIUM FEATURE]</span></b></label>
+                                </div>
+                                <div class="panel-body">
+                                    <label for="role">Choose Role: &nbsp;&nbsp;</label>
+                                    <select name="role_name" id="role_id" disabled>
+                                        <option value="Registered">Registered</option>
+                                        <option value="Admin">Admin</option>
+                                    </select>
+                                    &nbsp;&nbsp;[ Note:The Selected Role will be applied to newly registered users through SSO ]
+
+                                </div>
+                                <div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane  fade" id="tabBody3" role="tabpanel" aria-labelledby="tab3" aria-hidden="true" tabindex="0">
+
+                <div class="panel-group">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <label style="align-content:center"><b>Custom Redirect URL   &nbsp;&nbsp; <span style="color:blue">[PREMIUM FEATURE]</span></b></label>
+                        </div>
+                        <div class="panel-body">
+                            <label>Relaystate URL: &nbsp;&nbsp;</label>
+                            <input id="relaystate" placeholder="Enter custom redirect URL" width="100" disabled style="background-color:#eee; width:340px" />
+                            &nbsp;&nbsp;<br /><i>
+                                <br />
+                                [ Note: Users will always be redirected to this URL after SSO. When left blank, the users will be redirected to the same page from where the SSO was initiated.]
+                            </i>
+
+                        </div>
+                        <div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel-group">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <label style="align-content:center"><b>Add SSO to your application</b></label>&nbsp;<div data - toggle='tooltip' title='This section explains how you setup and initiate the SSO from your store' class='fa fa-question-circle'></div>
+
+                                </div>
+                                <div class="panel-body">
+                                    <b>1. Add the below link to the page where you want to initiate the SSO.</b> <br />
+
+                                    @{
+                                        string SSO_url = Context.Request.Scheme + "://" + Context.Request.Host + Context.Request.PathBase;
+                                        SSO_url += "/Admin/saml/login";
+                                    }
+                                    <br /><b> Your Store SSO Link: </b> @SSO_url<br /><br />
+
+                                    <b>Example: </b><br /><code> &lt;a href="@SSO_url"&gt; SSO Link &lt;/a&gt;</code>
+
+                                    <br /><br />
+
+                                    <b>2. Miniorange SSO widget. </b><span style="color:blue">[PREMIUM FEATURE]</span>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane  fade" id="tabBody5" role="tabpanel" aria-labelledby="tab5" aria-hidden="true" tabindex="0">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2>This is the content of tab six.</h2>
+                            <p>This field is a rich HTML field with a content editor like others used in Sitefinity. It accepts images, video, tables, text, etc. Street art polaroid microdosing la croix taxidermy. Jean shorts kinfolk distillery lumbersexual pinterest XOXO semiotics. Tilde meggings asymmetrical literally pork belly, heirloom food truck YOLO. Meh echo park lyft typewriter. </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane  fade" id="tabBody4" role="tabpanel" aria-labelledby="tab4" aria-hidden="true" tabindex="0">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="tile">
+                            <div class="row">
+                                <div class="col-lg-10" style="width: 950px;">
+                                    <h3>Follow these steps to setup the plugin:</h3>
+                                    Following these steps will help you with the required SSO configuration between your Identity provider and nopCommerce store.
+                                    If you need any help with the setup contact us using the support form in the plugin or you can mail us at <a href="mailto:info@xecurify.com">info@xecurify.com</a>
+
+                                    <h4>Step 1:  Configure your Identity Provider</h4>
+                                    <ul>
+                                        <li>
+                                            For SP metadata, use the SP metadata URL or download the SP metadata as a .xml file and upload it at your IdP end. You can find both these options under the <b><i>Service Provider Metadata</i></b> tab.
+                                        </li>
+                                        <br />
+                                        <img src="~/Plugins/miniorange.saml/Content/Images/spmetadownload.png" class="mo_saml_img" />
+                                        <br />
+                                        <br />
+                                        <li>
+                                            Alternatively, you can manually add the SP Entity ID and ACS URL from <b><i>Service Provider metadata</i></b> tab in plugin to your IdP configurations.
+
+                                        </li>
+                                        <br />
+                                        <img src="~/Plugins/miniorange.saml/Content/Images/spmetamanually.png" class="mo_saml_img" />
+                                    </ul>
+                                    <br /><br />
+
+
+                                    <h4>Step 2:  Configure your Service Provider</b></h4>
+                                    There are two methods to achieve this -
+                                    <ul>
+
+                                        <li>
+                                            To upload IdP's metadata, you can use the <b><i>Upload IdP metadata</i></b> button, if you have the IdP metadata URL or the IdP metadata .xml file.
+
+                                        </li>
+                                        <br />
+                                        <img src="~/Plugins/miniorange.saml/Content/Images/idpconfigupload.png" class="mo_saml_img" />
+
+
+                                        <br />
+                                        <br />
+                                        <li>
+                                            Alternatively, you can copy the IDP Entity ID and Single Sign-On Url values from the IdP and fill them up under the <b><i>Identity Provider Settings</i></b> tab.
+                                        </li>
+
+                                        <br />
+                                        <img src="~/Plugins/miniorange.saml/Content/Images/idpconfigmanually.png" class="mo_saml_img" />
+                                        <br />
+                                        <br />
+
+                                        <br />
+                                    </ul>
+                                    <h4>Step 3:   Test Configuration</b></h4>
+                                    <ul>
+                                        <li>
+                                            Click the <b><i>Test Configuration </i></b>button to verify if you have configured plugin correctly.
+                                        </li>
+                                        <li>
+                                            On successful configuration, you will get Attributes Name and Attribute Values in Test Configuration window.
+                                        </li>
+                                        <br />
+                                        <img src="~/Plugins/miniorange.saml/Content/Images/testconfiguration.png" style="width:50%;" class="mo_saml_img" />
+                                    </ul>
+                                    <br />
+                                    <br /><br />
+
+
+
+
+
+                                    <h4>Step 4:  Attribute Mapping</b></h4>
+                                    <ul>
+                                        <li>
+                                            Map Attribute Names provided by your IdP with your store attributes, under <b><i>Attribute/Role Mapping</i></b> tab
+                                        </li>
+                                        <li>
+                                            Click on Save button.
+                                        </li>
+                                        <br />
+                                        <img src="~/Plugins/miniorange.saml/Content/Images/attrmapping.png" class="mo_saml_img" />
+                                    </ul>
+                                    <br />
+                                    <br /><br />
+
+
+
+
+                                    <h4>Step 5:  Enabling SSO in your nopCommerce store</b></h4>
+                                    <ul>
+                                        <li>
+                                            Under the <b><i>Redirection & SSO link</i></b> tab, use the URL labeled as <b><i>Your Store SSO Link</i></b> in your store to initiate the SSO.
+                                        </li>
+                                        <li>
+                                            Please make sure the Enable SSO checkbox is enabled under the <b><i>Identity Provider Settings</i></b> Tab
+                                        </li>
+                                        <br />
+                                        <img src="~/Plugins/miniorange.saml/Content/Images/enablesso.png" class="mo_saml_img" />
+                                    </ul>
+                                    <br />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+    </section>
+</div>>

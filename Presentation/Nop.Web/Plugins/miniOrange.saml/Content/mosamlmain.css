@@ -1,0 +1,350 @@
+﻿#mo_saml_customers {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 75%;
+}
+
+    #mo_saml_customers td, #mo_saml_customers th {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+    }
+
+    #mo_saml_customers tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    #mo_saml_customers tr:hover {
+        background-color: #ddd;
+    }
+
+    #mo_saml_customers th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: center;
+        background-color: #04AA6D;
+        color: white;
+    }
+
+
+.mo_saml_container {
+    margin-top: 30px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Source Sans Pro';
+    font-weight: 700;
+}
+
+.mo_saml_fancyTab {
+    text-align: center;
+    padding: 14px;
+    background-color: #eee;
+    box-shadow: 0 0 0 1px #ddd;
+    top: 15px;
+    transition: top .2s;
+}
+
+    .mo_saml_fancyTab.active {
+        top: 0;
+        transition: top .2s;
+    }
+
+.whiteBlock {
+    display: none;
+}
+
+.mo_saml_fancyTab.active .whiteBlock {
+    display: block;
+    height: 2px;
+    bottom: -2px;
+    background-color: #fff;
+    width: 99%;
+    position: absolute;
+    z-index: 1;
+}
+
+.mo_saml_fancyTab a {
+    font-family: 'Source Sans Pro';
+    font-size: 1.65em;
+    font-weight: 300;
+    transition: .2s;
+    color: #333;
+}
+
+
+.mo_saml_fancyTabs {
+    border-bottom: 0px solid #ddd;
+    margin: 15px 0 0;
+    width: 76%;
+    height: 56px;
+}
+
+li.mo_saml_fancyTab a {
+    padding-top: 15px;
+    top: -15px;
+    padding-bottom: 0;
+}
+
+li.mo_saml_fancyTab.active a {
+    padding-top: inherit;
+}
+
+.mo_saml_fancyTab .fa {
+    font-size: 40px;
+    width: 100%;
+    padding: 15px 0 5px;
+    color: #666;
+}
+
+.mo_saml_fancyTab.active .fa {
+    color: #cfb87c;
+}
+
+.mo_saml_fancyTab a:focus {
+    outline: none;
+}
+
+.mo_saml_fancyTabContent {
+    border-color: transparent;
+    box-shadow: 0 -2px 0 -1px #fff, 0 0 0 1px #ddd;
+    padding: 30px 15px 15px;
+    position: relative;
+    background-color: #fff;
+    margin-top: 19px;
+}
+
+.nav-tabs > li.mo_saml_fancyTab.active > a,
+.nav-tabs > li.mo_saml_fancyTab.active > a:focus,
+.nav-tabs > li.mo_saml_fancyTab.active > a:hover {
+    border-width: 0;
+}
+
+.nav-tabs > li.mo_saml_fancyTab:hover {
+    background-color: #f9f9f9;
+    box-shadow: 0 0 0 1px #ddd;
+}
+
+.nav-tabs > li.mo_saml_fancyTab.active:hover {
+    background-color: #fff;
+    box-shadow: 1px 1px 0 1px #fff, 0 0px 0 1px #ddd, -1px 1px 0 0px #ddd inset;
+}
+
+.nav-tabs > li.mo_saml_fancyTab:hover a {
+    border-color: transparent;
+}
+
+.nav.nav-tabs .mo_saml_fancyTab a[data-toggle="tab"] {
+    background-color: transparent;
+    border-bottom: 0;
+}
+
+.nav-tabs > li.mo_saml_fancyTab:hover a {
+    border-right: 1px solid transparent;
+}
+
+.nav-tabs > li.mo_saml_fancyTab > a {
+    margin-right: 0;
+    border-top: 0;
+    padding-bottom: 30px;
+    margin-bottom: -30px;
+}
+
+.nav-tabs > li.mo_saml_fancyTab {
+    margin-right: 0;
+    margin-bottom: 0;
+    padding:14px;
+}
+
+    .nav-tabs > li.mo_saml_fancyTab:last-child a {
+        border-right: 1px solid transparent;
+    }
+
+    .nav-tabs > li.mo_saml_fancyTab.active:last-child {
+        border-right: 0px solid #ddd;
+        box-shadow: 0px 2px 0 0px #fff, 0px 0px 0 1px #ddd;
+    }
+
+.mo_saml_fancyTab:last-child {
+    box-shadow: 0 0 0 1px #ddd;
+}
+
+.tabs .nav-tabs li.mo_saml_fancyTab.active a {
+    box-shadow: none;
+    top: 0;
+}
+
+
+.mo_saml_fancyTab.active {
+    background: #fff;
+    box-shadow: 1px 1px 0 1px #fff, 0 0px 0 1px #ddd, -1px 1px 0 0px #ddd inset;
+    padding-bottom: 30px;
+}
+
+.mo-saml-arrow-down {
+    display: none;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 22px solid #ddd;
+    position: absolute;
+    top: -1px;
+    left: calc(50% - 20px);
+}
+
+.alert .alert-danger {
+    margin: 10px 10px 10px 0px;
+    border-radius: 0 0 3px 3px;
+    width: 50%;
+}
+
+.mo-saml-arrow-down-inner {
+    width: 0;
+    height: 0;
+    border-left: 18px solid transparent;
+    border-right: 18px solid transparent;
+    border-top: 12px solid #fff;
+    position: absolute;
+    top: -22px;
+    left: -18px;
+}
+
+.mo_saml_fancyTab.active .mo-saml-arrow-down {
+    display: block;
+}
+
+
+
+.dropbtn {
+    background-color: #fefdfd;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    color: dimgrey;
+    min-width: 150px;
+}
+
+.drpdwnwn {
+    position: relative;
+    display: inline-block;
+}
+
+.star {
+    color: red;
+}
+
+.drpdwn-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 150px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    text-align: center;
+}
+
+    .drpdwn-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+        .drpdwn-content a:hover {
+            background-color: #ddd;
+            color: white;
+        }
+
+.drpdwn:hover .drpdwn-content {
+    display: block;
+}
+
+.mo_saml_img {
+    vertical-align: middle;
+    width: 100%;
+    border: 1px solid;
+}
+
+.drpdwn:hover .dropbtn {
+    background-color: #3e8e41;
+    color: white;
+}
+
+.center {
+    margin: auto;
+    width: 60%;
+    padding: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.hideform {
+    display: none;
+}
+
+:root {
+    --modal-duration: 1s;
+    --modal-color: #428bca;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    margin: 10% auto;
+    width: 40%;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+    animation-name: modalopen;
+    animation-duration: var(--modal-duration);
+}
+
+.modal-header h2,
+.modal-footer h3 {
+    margin: 0;
+}
+
+.modal-header {
+    background: var(--modal-color);
+    padding: 15px;
+    color: #fff;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.modal-body {
+    padding: 10px 20px;
+    background: #fff;
+}
+
+.modal-footer {
+    background: var(--modal-color);
+    padding: 10px;
+    color: #fff;
+    text-align: center;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.close {
+    color: #ccc;
+    float: right;
+    font-size: 30px;
+    color: #fff;
+}
+
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
