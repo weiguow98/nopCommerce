@@ -228,8 +228,8 @@ namespace Nop.Web.Areas.Admin.Factories
                 model.Published = true;
                 model.IncludeInTopMenu = true;
                 model.AllowCustomersToSelectPageSize = true;
-                model.PriceRangeFiltering = true;
-                model.ManuallyPriceRange = true;
+                model.PriceRangeFiltering = false; //WI-784
+                model.ManuallyPriceRange = false; //WI-784
                 model.PriceFrom = NopCatalogDefaults.DefaultPriceRangeFrom;
                 model.PriceTo = NopCatalogDefaults.DefaultPriceRangeTo;
             }

@@ -846,14 +846,14 @@ namespace Nop.Web.Areas.Admin.Factories
                 model.RecurringCycleLength = 100;
                 model.RecurringTotalCycles = 10;
                 model.RentalPriceLength = 1;
-                model.StockQuantity = 10000;
+                model.StockQuantity = 0;  //WI-784
                 model.NotifyAdminForQuantityBelow = 1;
                 model.OrderMinimumQuantity = 1;
                 model.OrderMaximumQuantity = 10000;
                 model.TaxCategoryId = _taxSettings.DefaultTaxCategoryId;
                 model.UnlimitedDownloads = true;
-                model.IsShipEnabled = true;
-                model.AllowCustomerReviews = true;
+                model.IsShipEnabled = false; //WI-784
+                model.AllowCustomerReviews = false; //WI-784
                 model.Published = true;
                 model.VisibleIndividually = true;
             }

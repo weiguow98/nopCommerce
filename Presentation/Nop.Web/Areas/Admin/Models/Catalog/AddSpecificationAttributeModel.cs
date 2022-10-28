@@ -17,6 +17,7 @@ namespace Nop.Web.Areas.Admin.Models.Catalog
             AvailableOptions = new List<SelectListItem>();
             AvailableAttributes = new List<SelectListItem>();
             ShowOnProductPage = true;
+            AllowFiltering = true; //WI-784
             AttributeName = string.Empty;
             AttributeTypeName = string.Empty;
             Value = string.Empty;

@@ -3025,7 +3025,7 @@ namespace Nop.Services.Installation
                 IgnoreStoreLimitations = true,
                 CacheProductPrices = false,
                 ProductsByTagAllowCustomersToSelectPageSize = true,
-                ProductsByTagPageSizeOptions = "6, 3, 9, 18",
+                ProductsByTagPageSizeOptions = "20, 10, 50, 100", //"6, 3, 9, 18", WI-784
                 ProductsByTagPriceRangeFiltering = true,
                 ProductsByTagManuallyPriceRange = true,
                 ProductsByTagPriceFrom = NopCatalogDefaults.DefaultPriceRangeFrom,
@@ -3038,7 +3038,7 @@ namespace Nop.Services.Installation
                 DisplayTaxShippingInfoShoppingCart = isGermany,
                 DisplayTaxShippingInfoWishlist = isGermany,
                 DisplayTaxShippingInfoOrderDetailsPage = isGermany,
-                DefaultCategoryPageSizeOptions = "6, 3, 9",
+                DefaultCategoryPageSizeOptions = "20, 10, 50",  //WI-784
                 DefaultCategoryPageSize = 6,
                 DefaultManufacturerPageSizeOptions = "6, 3, 9",
                 DefaultManufacturerPageSize = 6,
