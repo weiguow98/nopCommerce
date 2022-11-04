@@ -878,6 +878,9 @@ namespace Nop.Web.Controllers
                     if (_customerSettings.FaxEnabled)
                         await _genericAttributeService.SaveAttributeAsync(customer, NopCustomerDefaults.FaxAttribute, model.Fax);
 
+                    //WI-784 Close ConfigurationSteps panel on the dashboard by default
+                    await _genericAttributeService.SaveAttributeAsync(customer, NopCustomerDefaults.CloseConfigurationStepsAttribute, "True");
+
                     //newsletter
                     if (_customerSettings.NewsletterEnabled)
                     {

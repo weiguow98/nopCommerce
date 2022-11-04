@@ -6,12 +6,12 @@
         <div class="title sub-title col-md-12">
             <strong>@T("Categories")</strong>
         </div>
-        @if (Model.Count <= 3)
+        @if (Model.Count <= 300)  @*WI-784 update to stay in Grid display*@
         {
             foreach (var item in Model)
             {
                 <div class="item-box col-xs-12 col-sm-4 col-md-4">
-                    <div class="category-item">
+                    <div class="category-item">22
                         <h3 class="title">
                             <a href="@Url.RouteUrl("Category", new { SeName = item.SeName })" title="@item.PictureModel.Title"> @item.Name</a>
                         </h3>

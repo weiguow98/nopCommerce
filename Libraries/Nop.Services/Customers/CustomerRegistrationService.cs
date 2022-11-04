@@ -445,8 +445,9 @@ namespace Nop.Services.Customers
             var urlHelper = _urlHelperFactory.GetUrlHelper(_actionContextAccessor.ActionContext);
 
             //redirect to the return URL if it's specified
-            if (!string.IsNullOrEmpty(returnUrl) && urlHelper.IsLocalUrl(returnUrl))
-                return new RedirectResult(returnUrl);
+            //WI-784 RedirectResult("/dev/ad12itnopcomm") gave 404 erro
+            //if (!string.IsNullOrEmpty(returnUrl) && urlHelper.IsLocalUrl(returnUrl))
+            //    return new RedirectResult(returnUrl);
 
             return new RedirectToRouteResult("Homepage", null);
         }

@@ -402,6 +402,9 @@ namespace Nop.Web.Areas.Admin.Controllers
                 if (_customerSettings.FaxEnabled)
                     await _genericAttributeService.SaveAttributeAsync(customer, NopCustomerDefaults.FaxAttribute, model.Fax);
 
+                //WI-784 Close ConfigurationSteps panel on the dashboard by default
+                await _genericAttributeService.SaveAttributeAsync(customer, NopCustomerDefaults.CloseConfigurationStepsAttribute, "True");
+
                 //custom customer attributes
                 await _genericAttributeService.SaveAttributeAsync(customer, NopCustomerDefaults.CustomCustomerAttributes, customerAttributesXml);
 
