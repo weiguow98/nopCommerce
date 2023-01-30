@@ -362,7 +362,8 @@ namespace Nop.Web.Factories
                 model.NoResultMessage = await _localizationService.GetResourceAsync("Catalog.Products.NoResult");
             else
             {
-                model.Products = (await _productModelFactory.PrepareProductOverviewModelsAsync(products)).ToList();
+                //WI-784 prepare productspecification so that denied can show visual impact
+                model.Products = (await _productModelFactory.PrepareProductOverviewModelsAsync(products, true, true, null, true)).ToList();
                 model.LoadPagedList(products);
             }
         }

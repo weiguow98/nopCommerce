@@ -2430,3 +2430,10 @@ button {
     width: 16.66666667%;
     padding-right: 15px;
 }
+
+/*WI-784 denied product*/
+.ad12app-denied {
+  border: 20px;
+  border-style: solid;
+  border-color: red;
+}

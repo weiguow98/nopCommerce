@@ -1,4 +1,5 @@
 ﻿@model CatalogProductsModel
+@using System.Text 
 
 @if (!string.IsNullOrEmpty(Model.WarningMessage))
 {
@@ -23,6 +24,46 @@
             </div>            
         </div>
     </div>
+
+    @*WI-784 Add Denied specific visual*@
+    StringBuilder jsBuilder = new StringBuilder();
+    foreach (var product in Model.Products)
+    {
+        Boolean productProcessed = false;
+        ProductSpecificationModel model2 = product.ProductSpecificationModel; 
+        foreach (var group in model2.Groups)
+        {
+
+            if (group.Attributes.Count > 0)
+            {
+                for (int i = 0; i < group.Attributes.Count; i++)
+                {
+                    var attr = group.Attributes[i];
+                    for (int j = 0; j < attr.Values.Count; j++)
+                    {
+                        var value = attr.Values[j];
+                        if (attr.Name == "District Approvals" && !string.IsNullOrEmpty(value.ValueRaw) && value.ValueRaw.ToLower().Contains("denied"))
+                        {
+                            jsBuilder.AppendLine(string.Format("$('[data-productid={0}]').find('.picture').addClass('ad12app-denied');", product.Id));
+                            productProcessed = true; 
+                            break;
+                        }
+                    }
+                    if (productProcessed) break;
+                }
+            }
+            if (productProcessed) break;
+        }
+    }
+    if (jsBuilder.Length > 0)
+        {
+            <script asp-location="Footer">
+                $(document).ready(function () {
+                    @Html.Raw(jsBuilder.ToString());
+                });
+            </script>
+        }
+    @*WI-784 end*@
 
     var pager = Html.Pager(Model)
         .QueryParam("pagenumber")

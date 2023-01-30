@@ -189,5 +189,34 @@
             </div>
         </form>
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductDetailsBottom, additionalData = Model })
+
+        @{
+                    //WI-784 Add Denied specific visual
+                    ProductSpecificationModel model2 = Model.ProductSpecificationModel; 
+                    foreach (var group in model2.Groups)
+                    {
+                        if (group.Attributes.Count > 0)
+                        {
+                            for (int i = 0; i < group.Attributes.Count; i++)
+                            {
+                                var attr = group.Attributes[i];
+                                for (int j = 0; j < attr.Values.Count; j++)
+                                {
+                                    var value = attr.Values[j];
+                                    if (attr.Name == "District Approvals" && !string.IsNullOrEmpty(value.ValueRaw) && value.ValueRaw.ToLower().Contains("denied"))
+                                    {
+                                        <script asp-location="Footer">
+                                            $(document).ready(function () {
+                                            $("[data-productid=@(Model.Id)]").find(".picture").addClass("ad12app-denied");
+                                            });
+                                        </script>
+
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
     </div>
 </div>
